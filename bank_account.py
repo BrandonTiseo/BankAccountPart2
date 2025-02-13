@@ -22,9 +22,9 @@ class BankAccount:
         print(f"{self.bank_title} Customer Info \nName: {self.customer_name}\nCurrent Balance: {self.current_balance}\nMinimum Balance: {self.minimum_balance}\n")
 
 class SavingAccount(BankAccount):
-    def __init__(self,customer_name, current_balance, minimum_balance, interest_rate):
+    def __init__(self,customer_name, current_balance, minimum_balance, interest_rate, account_number):
         self.interest = interest_rate
-        super().__init__(customer_name, current_balance, minimum_balance)
+        super().__init__(customer_name, current_balance, minimum_balance, account_number)
 
     #Calcultes your accrued interest for your current account balance over a certain amount of time in years.
     def calc_interest(self, years):
@@ -33,10 +33,10 @@ class SavingAccount(BankAccount):
 
 
 class CheckingAccount(BankAccount):
-    def __init__(self, customer_name, current_balance, minimum_balance, withdraw_limit):
+    def __init__(self, customer_name, current_balance, minimum_balance, withdraw_limit, account_number):
 
         #initialize parent
-        super().__init__(customer_name, current_balance, minimum_balance)
+        super().__init__(customer_name, current_balance, minimum_balance, account_number)
 
         #store child parameters
         self.withdraw_limit = withdraw_limit
