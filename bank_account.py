@@ -19,25 +19,22 @@ class BankAccount:
         print(f"{self.bank_title} Customer Info \nName: {self.customer_name}\nCurrent Balance: {self.current_balance}\nMinimum Balance: {self.minimum_balance}\n")
 
 
+class CheckingAccount(BankAccount):
+    def __init__(self, customer_name, current_balance, minimum_balance, withdraw_limit):
 
-#main program
-account_1 = BankAccount("Brandon tiseo", 900, 100)
-account_1.print_customer_information()
+        #initialize parent
+        super().__init__(customer_name, current_balance, minimum_balance)
 
-account_2 = BankAccount("Andrew Tiseo", 90, 0)
-account_2.print_customer_information()
+        #store child parameters
+        self.withdraw_limit = withdraw_limit
 
-#Testing invalid withdraw
-print("WITHDRAWING")
-account_1.withdraw(801)
-account_1.print_customer_information()
+    def withdraw(self, withdraw_amount):
 
-#Testing proper withdraw
-print("WITHDRAWING")
-account_1.withdraw(50)
-account_1.print_customer_information()
+        if (withdraw_amount <= self.withdraw_limit):
+            super().withdraw(withdraw_amount)
+        else:
+            print("Requested amount exceeds withdraw limit. Try again")
 
-print("DEPOSITING")
-account_1.deposit(1000)
-account_1.print_customer_information()
+
+
 
