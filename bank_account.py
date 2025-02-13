@@ -18,6 +18,16 @@ class BankAccount:
     def print_customer_information(self):
         print(f"{self.bank_title} Customer Info \nName: {self.customer_name}\nCurrent Balance: {self.current_balance}\nMinimum Balance: {self.minimum_balance}\n")
 
+class SavingAccount(BankAccount):
+    def __init__(self,customer_name, current_balance, minimum_balance, interest_rate):
+        self.interest = interest_rate
+        super().__init__(customer_name, current_balance, minimum_balance)
+
+    #Calcultes your accrued interest for your current account balance over a certain amount of time in years.
+    def calc_interest(self, years):
+        accrued_interest = self.current_balance * self.interest * years
+        return accrued_interest
+
 
 class CheckingAccount(BankAccount):
     def __init__(self, customer_name, current_balance, minimum_balance, withdraw_limit):
